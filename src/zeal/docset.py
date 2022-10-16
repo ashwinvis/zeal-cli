@@ -22,7 +22,7 @@ def list_all(docset_dir: str = config.docset_dir) -> list:
     return installed_docsets
 
 
-def download(docset_name: str, feeds_dir: str, docset_version: str = LATEST_VERSION, docset_dir: str = config.docset_dir) -> None:
+def download(docset_name: str, force: bool, feeds_dir: str, docset_version: str = LATEST_VERSION, docset_dir: str = config.docset_dir) -> None:
     """Download a docset by its feed name.
 
     :param docset_name: String, the feed name of the docset to download
@@ -32,7 +32,7 @@ def download(docset_name: str, feeds_dir: str, docset_version: str = LATEST_VERS
     :return: None
     """
     # Raise an exception if the docset is already installed
-    if docset_name in list_all(docset_dir=docset_dir):
+    if docset_name in list_all(docset_dir=docset_dir) and not force:
         raise exceptions.DocsetAlreadyInstalledError(
             f"The docset '{docset_name}' is already installed."
         )
@@ -117,5 +117,5 @@ def _get_docset_xml(docset_name: str, feeds_dir: str):
         raise exceptions.DocsetNotExistsError(
             f"The docset '{docset_name}' cannot be found in the feeds to download."
         )
-    
+
     return docset_xml_path

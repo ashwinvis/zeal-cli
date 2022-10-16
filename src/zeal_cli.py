@@ -19,6 +19,7 @@ def main():
             "the docset name with an equals (=) and the version of the docset to select"
         )
     )
+    install_command.add_argument("-f", "--force", action="store_true", help="Force installation and overwrite existing docset")
 
     subparsers.add_parser("list", help="Prints a list of installed docsets")
 
@@ -82,7 +83,7 @@ def main():
                     docset_name = docset_info[0]
                     docset_version = docset_info[1]
                 print(f"Installing docset: {docset}")
-                zeal.docset.download(docset_name, feeds, docset_version=docset_version)
+                zeal.docset.download(docset_name, args.force, feeds, docset_version=docset_version)
                 print(f"Successfully installed docset: {docset}")
             print("Cleaning up")
             shutil.rmtree(feeds)
