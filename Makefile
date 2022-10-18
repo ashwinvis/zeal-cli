@@ -6,7 +6,7 @@ build:
 
 .PHONY: clean
 clean:
-	git checkout HEAD ./src/zeal/version.py
+	rm -f ./src/zeal_cli/version.py
 	rm -rf ./dist
 	rm -rf ./zeal-cli.spec
 	rm -rf ./build
