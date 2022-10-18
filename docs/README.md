@@ -1,6 +1,14 @@
 # Zeal CLI
 Zeal CLI is a command-line-interface for managing [Zeal](https://zealdocs.org/) docsets on Linux. It's syntax is roughly based on the basic syntax of the `apt` package manager, because Zeal CLI is basically a package manager for docsets.
 
+## Installation of this fork
+
+Use [pipx](https://pypa.github.io/pipx/)
+
+    pipx install "git+https://github.com/ashwinvis/zeal-cli.git#egg=zeal-cli"
+
+You can also obtain the upstream version as described in the ["Usage" section](#usage).
+
 ## Features
 - Simple, familiar command-line interface
 - Gets docsets from the same source as Zeal
